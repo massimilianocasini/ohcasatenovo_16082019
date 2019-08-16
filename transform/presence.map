@@ -1,0 +1,4 @@
+OPEN=Connect
+CLOSED=Not Connect
+NULL=unknown
+-=unknown

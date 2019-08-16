@@ -1,0 +1,6 @@
+rule "Accendi luce quando si apre la serranda"
+when
+    Item SensorBinary1_Serranda_Garage_ZW16 changed from OFF to ON
+then
+    SwitchBinary2_Luce_Garage_ZW15.sendCommand(ON)
+end

@@ -1,0 +1,18 @@
+Disabilita tutti i log:
+log:set WARN smarthome.event
+
+Abilita tutti i log
+log:set INFO smarthome.event
+
+Setta i log del binding ipcamera
+log:set WARN org.openhab.binding.ipcamera
+log:set INFO org.openhab.binding.ipcamera
+log:set DEBUG org.openhab.binding.ipcamera
+log:set TRACE org.openhab.binding.ipcamera
+
+Enable Verbose Logging MODBUS
+Enable DEBUG or TRACE (even more verbose) logging for the loggers named:
+
+log:set INFO org.openhab.binding.modbus
+log:set INFO org.openhab.io.transport.modbus
+log:set DEBUG net.wimpi.modbus
