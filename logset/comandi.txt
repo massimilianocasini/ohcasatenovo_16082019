@@ -1,8 +1,12 @@
-Disabilita tutti i log:
+Disabilitazione:
 log:set WARN smarthome.event
+log:set OFF ROOT
 
-Abilita tutti i log
+Abilitazione
 log:set INFO smarthome.event
+
+Stato log
+log:get
 
 Setta i log del binding ipcamera
 log:set WARN org.openhab.binding.ipcamera

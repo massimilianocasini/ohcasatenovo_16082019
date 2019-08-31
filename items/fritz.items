@@ -1,4 +1,5 @@
 Group gFritz
+Group gIP
 String  fboxName            "FBox Model [%s]"      (gFritz)       {fritzboxtr064="modelName"}
 String  fboxManufacturer    "FBox Manufacturer [%s]"   (gFritz)   {fritzboxtr064="manufacturerName"}
 String  fboxSerial          "FBox Serial [%s]"       (gFritz)     {fritzboxtr064="serialNumber"}
@@ -10,8 +11,10 @@ String  fboxWanIP           "FBox WAN IP [%s]"      (gFritz)      {fritzboxtr064
 Switch  fboxWifi24          "2,4GHz Wifi"        (gFritz)         {fritzboxtr064="wifi24Switch"}
 Switch  fboxWifi50          "5,0GHz Wifi"          (gFritz)       {fritzboxtr064="wifi50Switch"}
 Switch  fboxGuestWifi       "Guest Wifi"            (gFritz)      {fritzboxtr064="wifiGuestSwitch"}
-Contact pMacOnline1      "Presence Repeater(WiFi) [MAP(presence.map):%s]"    (gFritz)    {fritzboxtr064="maconline:02-28-6D-34-71-49" }
-Contact pMacOnline2      "Presence Prodino [MAP(presence.map):%s]"    (gFritz)    {fritzboxtr064="maconline:5C-CF-7F-13-6E-D7"}
+Contact repeater1160      "Presence Repeater 1160 (WiFI) [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:62-FF-4D-83-EE-03" }
+Contact frascati2      "Presence Frascati2 [MAP(presence.map):%s]"    (gFritz,gIP)    {fritzboxtr064="maconline:B8-27-EB-C1-A2-90" }
+Contact repeater310      "Presence Repeater 310 (WiFI) [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:E6-28-6D-34-71-49" }
+Contact prodino      "Presence Prodino [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:5C-CF-7F-13-6E-D7"}
 
 // WAN statistics
 

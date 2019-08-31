@@ -46,10 +46,16 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Text item=Presence label="C'è qualcuno" visibility=[Presence==ON] 
 		Switch item=Presence_Auto label="Presenza" mappings=[OFF="Disabilitata", ON="Abilitata"]
 	}
+	Frame label="Dispositivi IP" {
+		Default item=repeater1160 icon="network"
+		Default item=frascati2 icon="network"
+		Default item=repeater310 icon="network"
+		Default item=prodino icon="network"
+	}
 
 	Frame label="Stanze" {
 		Text label="Cucina" icon="kitchen" { 
-				Switch item=SwitchBinary_Frigorifero_Cucina_ZW3 icon="light" mappings=[ON="ON", OFF="OFF"]
+			Switch item=SwitchBinary_Frigorifero_Cucina_ZW3 icon="light" mappings=[ON="ON", OFF="OFF"]
 				Text item=MeterKwh_Frigorifero_Cucina_ZW3 icon="energy"
 				Text item=SensorPower_Frigorifero_Cucina_ZW3 icon="energy"
 		}
@@ -244,8 +250,9 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	}
 	Frame label="TVCC"
 		{
-			Text item=Camera1 icon=camera {
-			Image label="PI"  url="http://192.168.178.38:8081/"
+			Text label="Camera1" icon=camera {
+			//Image label="PI"  url="http://192.168.178.58:8081/"
+			Video url="http://192.168.178.58:8081/" encoding="mjpeg"
 			}
 		}
 	

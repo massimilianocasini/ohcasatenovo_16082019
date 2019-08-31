@@ -62,3 +62,26 @@ then
         Presence.sendCommand(OFF)
         gPresence_Sensors.sendCommand(OFF)
 end
+
+rule "Controllo dispositivi IP"
+when 
+    Member of gIP changed
+then
+    val host = triggeringItem
+    if (host.state==OPEN) {
+        sendTelegram("bot1", host.name+" CONNESSO") 
+    }
+    else {
+        sendTelegram("bot1", host.name+" DISCONNESSO")
+    }
+end
+// when
+//         Item gIP changed
+// then
+//         if (pMacOnline1.state == OPEN) {
+//            sendTelegram("bot1", "Repeater 1160 CONNESSO") 
+//         }
+//         else {
+//             sendTelegram("bot1", "Repeater 1160 DISCONNESSO") 
+//         }
+// end
