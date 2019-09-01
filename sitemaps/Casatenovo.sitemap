@@ -47,10 +47,10 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Switch item=Presence_Auto label="Presenza" mappings=[OFF="Disabilitata", ON="Abilitata"]
 	}
 	Frame label="Dispositivi IP" {
-		Default item=repeater1160 icon="network"
-		Default item=frascati2 icon="network"
-		Default item=repeater310 icon="network"
-		Default item=prodino icon="network"
+		Default item=repeater1160 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
+		Default item=frascati2 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
+		Default item=repeater310 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
+		Default item=prodino icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
 	}
 
 	Frame label="Stanze" {

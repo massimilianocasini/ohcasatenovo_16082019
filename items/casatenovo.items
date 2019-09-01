@@ -16,6 +16,7 @@ Group gCaldaia
 Group gTemperatura
 Group gWeather
 Group gFotoVoltaico
+Group gZwave
 
 
 
@@ -38,10 +39,10 @@ Number SensorPower_Frigorifero_Cucina_ZW3 "Frigorifero Potenza impegnata [%.1f W
 Switch SwitchBinary_Frigorifero_Cucina_ZW3 "Frigorifero Stato presa" <switch>     ["Switchable"] {channel="zwave:device:512:node3:switch_binary"}
 
 //FGMS001 Motion Sensor, Studio
-Number:Temperature SensorTemperature_MotionSensor_Studio_ZW10 "Studio Temperatura [%.1f %unit%]" <temperature>  (gAll, gTemperatura, gStudio, gInfluxdb, gAvgTemperatura) ["CurrentTemperature","Temperature", "Measurement"] {channel="zwave:device:512:node10:sensor_temperature"}
-Number SensorLuminance_MotionSensor_Studio_ZW10 "Luminosità [%.1f]" <rgb> (gAll, gStudio, gInfluxdb)  {channel="zwave:device:512:node10:sensor_luminance"}
-Switch AlarmMotion_MotionSensor_Studio_ZW10 "Studio [MAP(ir.map):%s]" <motion> (gAll, gStudio, gMotion, gPresence_Sensors)  {channel="zwave:device:512:node10:alarm_motion"}
-Number BatteryLevel_MotionSensor_Studio_ZW10 "Studio Stato batteria [%d %%]" <battery> (gAll, gStudio) {channel="zwave:device:512:node10:battery-level"}
+Number:Temperature SensorTemperature_MotionSensor_Studio_ZW10 "Studio Temperatura [%.1f %unit%]" <temperature>  (gAll, gTemperatura, gStudio, gInfluxdb, gAvgTemperatura,gZwave) ["CurrentTemperature","Temperature", "Measurement"] {channel="zwave:device:512:node10:sensor_temperature"}
+Number SensorLuminance_MotionSensor_Studio_ZW10 "Luminosità [%.1f]" <rgb> (gAll, gStudio, gInfluxdb,gZwave)  {channel="zwave:device:512:node10:sensor_luminance"}
+Switch AlarmMotion_MotionSensor_Studio_ZW10 "Studio [MAP(ir.map):%s]" <motion> (gAll, gStudio, gMotion, gPresence_Sensors,gZwave)  {channel="zwave:device:512:node10:alarm_motion"}
+Number BatteryLevel_MotionSensor_Studio_ZW10 "Studio Stato batteria [%d %%]" <battery> (gAll, gStudio, gZwave) {channel="zwave:device:512:node10:battery-level"}
 
 
 //Energy Driven Switch C, Quadro elettrico
