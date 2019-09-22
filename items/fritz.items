@@ -63,4 +63,4 @@ Number  fboxMissedCalls  "Missed Calls [%s]"            (gFritz)  {fritzboxtr064
 // The ID count includes the entries from the "Call Blocks" page.
 // If you have no "Call Blocks", the first entry on the "Call Diversions" page has ID 0.
 // If you have 3 "Call Blocks", the first entry on the "Call Diversions" page has ID 3.
-Switch  fboxCD0Switch    "Call Deflection ID 0"         (gFritz)  {fritzboxtr064="callDeflectionSwitch:0"}
+//Switch  fboxCD0Switch    "Call Deflection ID 0"         (gFritz)  {fritzboxtr064="callDeflectionSwitch:0"}

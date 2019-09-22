@@ -17,18 +17,19 @@ body {
 		color: rgb(51, 158, 9);
 		}
 
-table {
+/* table {
 	border-spacing: 0px;
+	empty-cells: show;
 	border: 0px;
 	padding: 0px;
 	width: 1px;
-}
+} */
 
-#weather-table, #weather-location-name{
+/* #weather-table, #weather-location-name{
 	padding-top: 10px;
 	padding-left: 0px;
 	width: 100%;
-}
+} */
 
 weather-icon {
 	width: 110px;
@@ -36,27 +37,27 @@ weather-icon {
 	padding-right: 0px;
 }
 
-#weather-temp {
+/* #weather-temp {
 	text-align: left;
 	font-size: 25px;
 	width: 1px;
-}
+} */
 
-#weather-temp-sign {
-	vertical-align: top;
+/* #weather-temp-sign {
+	vertical-align: center;
 	text-align: left;
 	padding-top: 12px;
-	font-size: 16px;
-}
+	font-size: 56px;
+} */
 
-#weather-table-details {
+/* #weather-table-details {
 	font-size: 14px;
 	text-align: left;
 }
 
 #weather-table-details td {
 	white-space: nowrap;
-}
+} */
 
 #weather-forecast-table img {
 	width: 80px;

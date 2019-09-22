@@ -4,6 +4,16 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	Frame label=Oggi{
 		Text item=Date icon="calendar"
 		Text item=Temperatura_esterna
+		Text item=CommonId
+		Text item=ObservationTime
+		Text item=Condition_ID
+		Text item=CommonId0
+		Text item=CommonId1
+		Text item=ObservationTime1
+		Text item=Condition1
+		Text item=CommonId2
+		Text item=CommonId3
+
 	}
 	Frame label="Stato generale" {
 		Group item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
