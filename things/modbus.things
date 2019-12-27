@@ -1,6 +1,5 @@
 Bridge modbus:tcp:localhostTCP [ host="192.168.178.4", port=502, id=1 ] {
     // The base Register Common Block is set to 10001 (MODBUS PLC address [base 1]), or 10000 (MODBUS Protocol Address [base 0]).
-
     Bridge poller inverter [ start=40071, length=38, refresh=10000, type="holding" ] {
         Thing data I_AC_Current [readStart="40071", readValueType="uint16"]
         Thing data I_AC_CurrentA [readStart="40072", readValueType="uint16"]
@@ -53,9 +52,9 @@ Bridge modbus:tcp:localhostTCP [ host="192.168.178.4", port=502, id=1 ] {
     Bridge poller voltage [ start=40195, length=5, refresh=10000, type="holding" ] {
         Thing data M_AC_Voltage_L_N [ readStart="40195", readValueType="int16"]
     }
-    Bridge poller voltage [ start=40199, length=5, refresh=10000, type="holding" ] {
-        Thing data M_AC_Voltage_L_L [ readStart="40199", readValueType="int16"]
-    }
+  //  Bridge poller voltage [ start=40199, length=5, refresh=10000, type="holding" ] {
+  //      Thing data M_AC_Voltage_L_L [ readStart="40199", readValueType="int16"]
+  //  }
     Bridge poller frequency [ start=40204, length=2, refresh=10000, type="holding" ] {
         Thing data M_AC_Freq [ readStart="40204", readValueType="int16"]
         Thing data M_AC_Freq_SF [ readStart="40205", readValueType="int16"]

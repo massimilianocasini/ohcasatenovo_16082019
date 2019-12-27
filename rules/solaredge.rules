@@ -2,12 +2,12 @@ var Number ac_power_used
 var Number i_ac_power_post
 var Number m_ac_power_post
 
-rule "I_AC_Power_" //produzione
+rule "I_AC_Power" //produzione
 when
-	Item    I_AC_Power_          received update
+	Item    I_AC_Power          received update
 then
-    val ac_power = (I_AC_Power_.state as DecimalType).floatValue
-    val ac_power_sf = (I_AC_Power_SF_.state as DecimalType).floatValue
+    val ac_power = (I_AC_Power.state as DecimalType).floatValue
+    val ac_power_sf = (I_AC_Power_SF.state as DecimalType).floatValue
 
     if (ac_power_sf == 0) {
         I_AC_Power_POST.postUpdate(ac_power/1000)
@@ -28,12 +28,12 @@ then
     
 end
 
-rule "I_AC_Current_"
+rule "I_AC_Current"
 when
-	Item    I_AC_Current_          received update
+	Item    I_AC_Current          received update
 then
-    val ac_current = (I_AC_Current_.state as DecimalType).floatValue
-    val ac_current_sf = (I_AC_Current_SF_.state as DecimalType).floatValue
+    val ac_current = (I_AC_Current.state as DecimalType).floatValue
+    val ac_current_sf = (I_AC_Current_SF.state as DecimalType).floatValue
 
     if (ac_current_sf == 0) {
         I_AC_Current_POST.postUpdate(ac_current)
@@ -44,16 +44,16 @@ then
     if (ac_current_sf == -2) {
         I_AC_Current_POST.postUpdate(ac_current/100)
     }
- //logInfo("SOLAREDGE", "I_AC_CURRENT:" + I_AC_Current_.state + " I_AC_CURRENT_SF:" +  I_AC_Current_SF_.state + " I_AC_CURRENT_POST:" + I_AC_Current_POST.state)
+ //logInfo("SOLAREDGE", "I_AC_CURRENT:" + I_AC_Current_.state + " I_AC_CURRENT_SF:" +  I_AC_Current_SF.state + " I_AC_CURRENT_POST:" + I_AC_Current_POST.state)
     
 end
 
-rule "I_AC_VoltageAB_"
+rule "I_AC_VoltageAB"
 when
-	Item    I_AC_VoltageAB_          received update
+	Item    I_AC_VoltageAB     received update
 then
-    val ac_voltageab = (I_AC_VoltageAB_.state as DecimalType).floatValue
-    val ac_voltage_sf = (I_AC_Voltage_SF_.state as DecimalType).floatValue
+    val ac_voltageab = (I_AC_VoltageAB.state as DecimalType).floatValue
+    val ac_voltage_sf = (I_AC_Voltage_SF.state as DecimalType).floatValue
 
     if (ac_voltage_sf == 0) {
         I_AC_VoltageAB_POST.postUpdate(ac_voltageab)
@@ -64,17 +64,17 @@ then
     if (ac_voltage_sf == -2) {
         I_AC_VoltageAB_POST.postUpdate(ac_voltageab/100)
     }
- //logInfo("SOLAREDGE", "I_AC_VOLTAGE:" + I_AC_VoltageAB_.state + " I_AC_VOLTAGE_SF:" +  I_AC_Voltage_SF_.state + " I_AC_VOLTAGE_POST:" + I_AC_VoltageAB_POST.state)
+ //logInfo("SOLAREDGE", "I_AC_VOLTAGE:" + I_AC_VoltageAB_.state + " I_AC_VOLTAGE_SF:" +  I_AC_Voltage_SF.state + " I_AC_VOLTAGE_POST:" + I_AC_VoltageAB_POST.state)
     
 end
 
 
-rule "M_AC_Current_"
+rule "M_AC_Current"
 when
-	Item    M_AC_Current_          received update
+	Item    M_AC_Current  received update
 then
-    val ac_current = (M_AC_Current_.state as DecimalType).floatValue
-    val ac_current_sf = (M_AC_Current_SF_.state as DecimalType).floatValue
+    val ac_current = (M_AC_Current.state as DecimalType).floatValue
+    val ac_current_sf = (M_AC_Current_SF.state as DecimalType).floatValue
 
     if (ac_current_sf == 0) {
         M_AC_Current_POST.postUpdate(ac_current)
@@ -90,12 +90,12 @@ then
 end
 
 
-rule "M_AC_Power_" //Immessa in rete, calcolo potenza richiesta
+rule "M_AC_Power" //Immessa in rete, calcolo potenza richiesta
 when
-	Item    M_AC_Power_          received update
+	Item    M_AC_Power  received update
 then
-    val ac_power = (M_AC_Power_.state as DecimalType).floatValue
-    val ac_power_sf = (M_AC_Power_SF_.state as DecimalType).floatValue
+    val ac_power = (M_AC_Power.state as DecimalType).floatValue
+    val ac_power_sf = (M_AC_Power_SF.state as DecimalType).floatValue
 
     if (ac_power_sf == 0) {
         M_AC_Power_POST.postUpdate(ac_power/1000)
@@ -116,14 +116,14 @@ then
     
 end
 
-rule "I_DC_Voltage_"
+rule "I_DC_Voltage"
 when
-	Item    I_DC_Voltage_          received update
+	Item    I_DC_Voltage          received update
 then
-    val dc_voltage = (I_DC_Voltage_.state as DecimalType).floatValue
-    val dc_voltage_sf = (I_DC_Voltage_SF_.state as DecimalType).floatValue
+    val dc_voltage = (I_DC_Voltage.state as DecimalType).floatValue
+    val dc_voltage_sf = (I_DC_Voltage_SF.state as DecimalType).floatValue
 
-    if (I_DC_Voltage_.state > 65530) {
+    if (I_DC_Voltage.state > 65530) {
         I_DC_Voltage_POST.postUpdate(0)
     }
     else if (dc_voltage_sf == 0) {

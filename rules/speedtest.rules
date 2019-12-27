@@ -25,7 +25,7 @@ then
     SpeedtestResultDate.postUpdate(new DateTimeType())
 
     // execute the script, you may have to change the path depending on your system
-    var String speedtestCliOutput = executeCommandLine("/usr/local/bin/speedtest-cli@@--simple", 120*1000)
+    var String speedtestCliOutput = executeCommandLine("/usr/local/bin/speedtest-cli@@--simple@@--no-pre-allocate", 120*1000)
 
     // for debugging:
     //var String speedtestCliOutput = "Ping: 43.32 ms\nDownload: 21.64 Mbit/s\nUpload: 4.27 Mbit/s"

@@ -1,6 +1,5 @@
 Disabilitazione:
-log:set WARN smarthome.event
-log:set OFF ROOT
+log:set OFF smarthome.event
 
 Abilitazione
 log:set INFO smarthome.event

@@ -1,4 +1,3 @@
-
 // Atmosphere
 Number   Umidita_esterna      "Umidità esterna [%d %%]"  <humidity>  (gWeather, gInfluxdb)    {weather="locationId=Id1, type=atmosphere, property=humidity"}
 
@@ -10,14 +9,13 @@ DateTime LastUpdate       "Last update [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"   (gWeat
 String   CommonId         "Common Id[%s]"  {weather="locationId=Id1, type=condition, property=commonId"}
 // temperature
 //Number   Temperature      "Temperature [%.2f °C]"   <temperature>  (gWeather)  {weather="locationId=Id1, type=temperature, property=current"}
-Number   Temperatura_esterna   "Temperatura esterna [%.2f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, type=temperature, property=current"}
-Number   Temp_Feel        "Temperature percepita [%.2f °C]"<temperature> (gWeather) {weather="locationId=Id1, type=temperature, property=feel"}
-Number   Temp_Dewpoint    "Temperatura di rugiada [%.2f °C]"  <temperature>   (gWeather)   {weather="locationId=Id1, type=temperature, property=dewpoint"}
+Number   Temperatura_esterna   "Temperatura esterna [%.0f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, type=temperature, property=current"}
+Number   Temp_Feel        "Temperature percepita [%.0f °C]"<temperature> (gWeather) {weather="locationId=Id1, type=temperature, property=feel"}
+Number   Temp_Dewpoint    "Temperatura di rugiada [%.0f °C]"  <temperature>   (gWeather)   {weather="locationId=Id1, type=temperature, property=dewpoint"}
 
 // min and max values only available in forecasts
-Number   Temp_Min         "Temperature min [%.2f °C]" <temperature> (gWeather)  {weather="locationId=Id1, forecast=0, type=temperature, property=min"}
-Number   Temp_Max         "Temperature max [%.2f °C]" <temperature> (gWeather)  {weather="locationId=Id1,forecast=0, type=temperature, property=max"}
-
+Number   Temp_Min        "Temperature min [%.0f °C]" <temperature> (gWeather)  {weather="locationId=Id1, forecast=0, type=temperature, property=min"}
+Number   Temp_Max         "Temperature max [%.0f °C]" <temperature> (gWeather)  {weather="locationId=Id1,forecast=0, type=temperature, property=max"}
 
 // wind
 Number   Wind_Speed           "Windspeed [%.2f km/h]"    {weather="locationId=Id1, type=wind, property=speed"}
@@ -61,7 +59,7 @@ DateTime ObservationTime1  "Observation time [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"  (
 String   Temp_MinMax1      "Min/Max domani [%s °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=1,type=temperature, property=minMax"}
 Number   Temp_Min1      "Min oggi [%.0f °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=1,type=temperature, property=min"}
 Number   Temp_Max1      "Max oggi [%.0f °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=1,type=temperature, property=max"}
-Number   Temperatura_esterna1   "Temperatura esterna domani [%.2f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, forecast=1, type=temperature, property=current"}
+Number   Temperatura_esterna1   "Temperatura esterna domani [%.0f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, forecast=1, type=temperature, property=current"}
 
 String   Condition2        "Condizione prevista dopodomani [%s]"  <sun_clouds>   (gWeather)  {weather="locationId=Id1, forecast=2, type=condition, property=text"}
 String   CommonId2        "CommonId dopodomani [%s]"  <sun_clouds>   (gWeather)  {weather="locationId=Id1, forecast=2, type=condition, property=commonId"}
@@ -69,7 +67,7 @@ DateTime ObservationTime2  "Observation time [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"  (
 String   Temp_MinMax2      "Min/Max dopodomani [%s °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=2,type=temperature, property=minMax"}
 Number   Temp_Min2      "Min oggi [%.0f °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=2,type=temperature, property=min"}
 Number   Temp_Max2      "Max oggi [%.0f °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=2,type=temperature, property=max"}
-Number   Temperatura_esterna2   "Temperatura esterna dopodomani [%.2f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, forecast=2, type=temperature, property=current"}
+Number   Temperatura_esterna2   "Temperatura esterna dopodomani [%.0f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, forecast=2, type=temperature, property=current"}
 
 String   Condition3        "Condizione prevista a 3 gg [%s]"  <sun_clouds>   (gWeather)  {weather="locationId=Id1, forecast=3, type=condition, property=text"}
 String   CommonId3        "CommonId a 3gg [%s]"  <sun_clouds>   (gWeather)  {weather="locationId=Id1, forecast=3, type=condition, property=commonId"}
@@ -77,4 +75,4 @@ DateTime ObservationTime3  "Observation time [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"  (
 String   Temp_MinMax3      "Min/Max a 3gg [%s °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=3,type=temperature, property=minMax"}
 Number   Temp_Min3      "Min oggi [%.0f °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=3,type=temperature, property=min"}
 Number   Temp_Max3      "Max oggi [%.0f °C]" <temperature>  (gWeather)   {weather="locationId=Id1,forecast=3,type=temperature, property=max"}
-Number   Temperatura_esterna3   "Temperatura esterna a 3 gg [%.2f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, forecast=3, type=temperature, property=current"}
+Number   Temperatura_esterna3   "Temperatura esterna a 3 gg [%.0f °C]" <temperature> (gWeather, gInfluxdb)  {weather="locationId=Id1, forecast=3, type=temperature, property=current"}

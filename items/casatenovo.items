@@ -30,24 +30,24 @@ Number Riscaldamento_ManualSetPoint "SetPoint manuale [%.1f °C]" <temperature> 
 // gestione presenza
 Group:Switch:AND(OFF,ON) gPresence_Sensors <presence> // all presence sensors belong to this group
 Switch Presence "Someone is Present" <presence> // master presence switch, represents to the rest of OH where someone is home
-Switch Presence_Timer { expire="5m,command=OFF" } // anti-flapping timer
+Switch Presence_Timer { expire="15m,command=OFF" } // anti-flapping timer
 Switch Presence_Auto <switch>  //Presenza automatica o manuale
 
-//FGWP102 Metered Wall Plug Switch, Cucina
-Number MeterKwh_Frigorifero_Cucina_ZW3 "Frigorifero Assorbimento totale [%.1f Wh]" <energy> (gInfluxdb) {channel="zwave:device:512:node3:meter_kwh"}
-Number SensorPower_Frigorifero_Cucina_ZW3 "Frigorifero Potenza impegnata [%.1f W]" <energy> (gInfluxdb) {channel="zwave:device:512:node3:sensor_power"}
-Switch SwitchBinary_Frigorifero_Cucina_ZW3 "Frigorifero Stato presa" <switch>     ["Switchable"] {channel="zwave:device:512:node3:switch_binary"}
+// //FGWP102 Metered Wall Plug Switch, Cucina
+// Number MeterKwh_Frigorifero_Cucina_ZW3 "Frigorifero Assorbimento totale [%.1f Wh]" <energy> (gInfluxdb) {channel="zwave:device:512:node3:meter_kwh"}
+// Number SensorPower_Frigorifero_Cucina_ZW3 "Frigorifero Potenza impegnata [%.1f W]" <energy> (gInfluxdb) {channel="zwave:device:512:node3:sensor_power"}
+// Switch SwitchBinary_Frigorifero_Cucina_ZW3 "Frigorifero Stato presa" <switch>     ["Switchable"] {channel="zwave:device:512:node3:switch_binary"}
 
 //FGMS001 Motion Sensor, Studio
-Number:Temperature SensorTemperature_MotionSensor_Studio_ZW10 "Studio Temperatura [%.1f %unit%]" <temperature>  (gAll, gTemperatura, gStudio, gInfluxdb, gAvgTemperatura,gZwave) ["CurrentTemperature","Temperature", "Measurement"] {channel="zwave:device:512:node10:sensor_temperature"}
+Number:Temperature SensorTemperature_MotionSensor_Studio_ZW10 "Studio Temperatura [%.1f %unit%]" <temperature>  (gAll, gTemperatura, gAvgTemperatura, gStudio, gInfluxdb,gZwave) ["CurrentTemperature","Temperature", "Measurement"] {channel="zwave:device:512:node10:sensor_temperature"}
 Number SensorLuminance_MotionSensor_Studio_ZW10 "Luminosità [%.1f]" <rgb> (gAll, gStudio, gInfluxdb,gZwave)  {channel="zwave:device:512:node10:sensor_luminance"}
-Switch AlarmMotion_MotionSensor_Studio_ZW10 "Studio [MAP(ir.map):%s]" <motion> (gAll, gStudio, gMotion, gPresence_Sensors,gZwave)  {channel="zwave:device:512:node10:alarm_motion"}
+Switch AlarmMotion_MotionSensor_Studio_ZW10 "Studio Motion[MAP(ir.map):%s]" <motion> (gAll, gStudio, gMotion, gPresence_Sensors,gZwave)  {channel="zwave:device:512:node10:alarm_motion"}
 Number BatteryLevel_MotionSensor_Studio_ZW10 "Studio Stato batteria [%d %%]" <battery> (gAll, gStudio, gZwave) {channel="zwave:device:512:node10:battery-level"}
 
 
 //Energy Driven Switch C, Quadro elettrico
 Switch WPS104_11_switch_binary "Switch esterno" (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:switch_binary"}
-Number SensorPower_R220P_QE_ZW11 "Sensore di potenza [%.0f]" <energy> (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:sensor_power"}
+Number SensorPower_R220P_QE_ZW11  "Sensore di potenza [%.0f]" <energy> (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:sensor_power"}
 Number MeterVoltage_R220P_QE_ZW11 "Tensione rete [%.0f V]" <energy> (gAll, gQuadroElettrico, gInfluxdb) ["Voltage"] {channel="zwave:device:512:node11:meter_voltage"}
 Number MeterPowerFactor_R220P_QE_ZW11 "Sfasamento rete [%.0f ]" <energy> (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:meter_powerfactor"}
 Number MeterCurrent_R220P_QE_ZW11 "Corrente assorbita da rete [%.1f A]" <energy> (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:meter_current"}
@@ -65,12 +65,12 @@ Switch FGS222_15_switch_binary "" (gAll, gGarage) {channel="zwave:device:512:nod
 Switch SwitchBinary1_Serranda_Garage_ZW15 "Apri Serranda" <blinds> (gAll, gGarage)  ["Switchable"] {channel="zwave:device:512:node15:switch_binary1"} 
 Switch SwitchBinary2_Luce_Garage_ZW15 "Luce Garage" <light> (gAll, gGarage)  ["Lighting"] {channel="zwave:device:512:node15:switch_binary2", expire="3600s,command=OFF"}
  
-//FGBS001 Universal Binary Sensor, Garage
+//FGBS001 Universal Binary Sensor, Garage 
 Number FGBS001_16_scene_number "" (gAll, gGarage) {channel="zwave:device:512:node16:scene_number"}
 Switch SensorBinary1_Serranda_Garage_ZW16 "Stato serranda [MAP(serrande.map):%s]"  <blinds>  (gAll, gGarage) {channel="zwave:device:512:node16:sensor_binary1"}
 Switch FGBS001_16_alarm_general1 "" (gAll) {channel="zwave:device:512:node16:alarm_general1"}
 Switch SensorBinary2_IRMotion_Garage_ZW16 "IR [MAP(ir.map):%s]" <motion> (gAll, gGarage) {channel="zwave:device:512:node16:sensor_binary2"}
-Switch FGBS001_16_alarm_general2 ""  (gAll) {channel="zwave:device:512:node16:alarm_general2"}
+Switch FGBS001_16_alarm_general2 "" (gAll) {channel="zwave:device:512:node16:alarm_general2"}
 Number SensorTemperature3_DS1820_Garage_ZW16 "Garage Temperatura [%.1f °C]" <temperature>  (gAll, gTemperatura, gGarage, gInfluxdb) ["CurrentTemperature"] {channel="zwave:device:512:node16:sensor_temperature3"}
 
 //FGBS001 Universal Binary Sensor, Camera Alice
@@ -118,18 +118,3 @@ Switch SwitchBinary2_TV_Salone_ZW22 "TV, Ampli" <cinema> (gAll, gSalone) ["Switc
 Switch FGS221_23_switch_binary ""  (gAll) {channel="zwave:device:512:node23:switch_binary"}
 Switch FGS221_23_switch_binary1 "Libero" <climate> (gAll, gCaldaia) {channel="zwave:device:512:node23:switch_binary1"}
 Switch SwitchBinary2_Caldaia_Tecnico_ZW22 "Caldaia" <climate> (gAll, gCaldaia) ["Switchable"]  {channel="zwave:device:512:node23:switch_binary2"}
-
-
-// Prodino
-String Prodino0_in1 "Stato Antifurto [%s]" <alarm> (gAll, gAntifurto) ["iss:type:DevDoor","iss:room:Antifurto","iss:icon:alarm"]	{channel="mqtt:topic:myUnsecureBroker:prodino:alarmpanel"}
-//Switch prodino0_in2 "In 2 Status [%s]" 	 (gAll, gAntifurto)   {mqtt="<[myUnsecureBroker:/KMP/ProDinoWiFi/nInfo:state:MAP(prodino.map):optoIn-1.*]"}
-//Switch prodino0_in3 "In 3 Status [%s]" 	 (gAll, gAntifurto)   {mqtt="<[myUnsecureBroker:/KMP/ProDinoWiFi/nInfo:state:MAP(prodino.map):optoIn-2.*]"}
-//Switch prodino0_in4 "In 4 Status [%s]"  (gAll, gAntifurto)	{mqtt="<[myUnsecureBroker:/KMP/ProDinoWiFi/nInfo:state:MAP(prodino.map):optoIn-3.*]"}
-// Switch prodino0_out1 "Key gAntifurto"    <switch>  {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-0-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-0-0], <[myUnsecureBroker:/KMP/ProDinoWiFi/nInfo:state:MAP(prodino.map):optoIn-0.*]"}
-Switch Prodino0_out1 "Chiave"    <switch> (gAll, gAntifurto) ["iss:type:DevSwitch","iss:room:Antifurto"] {channel="mqtt:topic:myUnsecureBroker:prodino:alarmkey", expire="2s,command=OFF"}
-//Switch prodino0_out2 "Out 2"          (gAll, gAntifurto)      {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-1-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-1-0]"}
-//Switch prodino0_out3 "Out 3"           (gAll, gAntifurto)     {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-2-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-2-0]"}
-//Switch prodino0_out4 "Out 4"           (gAll, gAntifurto)     {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-3-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-3-0]"}
-Number Prodino_temp "Antifurto Temperatura [%.1f °C]"  <temperature> (gAll, gTemperatura, gAntifurto, gInfluxdb) {channel="mqtt:topic:myUnsecureBroker:prodino:temp_prodino"}
-Number Proxy_prodino_temp "Antifurto Temperatura [%.1f °C]"  <temperature> (gAll, gAntifurto, gInfluxdb) 
-Number Prodino_umid "Antifurto Umidità [%.1f %%]"      <humidity> (gAll, gAntifurto, gInfluxdb)  {channel="mqtt:topic:myUnsecureBroker:prodino:umid_prodino"}

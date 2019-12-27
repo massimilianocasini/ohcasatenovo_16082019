@@ -4,16 +4,6 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	Frame label=Oggi{
 		Text item=Date icon="calendar"
 		Text item=Temperatura_esterna
-		Text item=CommonId
-		Text item=ObservationTime
-		Text item=Condition_ID
-		Text item=CommonId0
-		Text item=CommonId1
-		Text item=ObservationTime1
-		Text item=Condition1
-		Text item=CommonId2
-		Text item=CommonId3
-
 	}
 	Frame label="Stato generale" {
 		Group item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
@@ -49,7 +39,7 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		//Group item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
 		Switch item=SwitchBinary2_Caldaia_Tecnico_ZW22 mappings=[ON="Accesa", OFF="Spenta"]
 		Switch item=Riscaldamento_Auto mappings=[OFF="Manuale", ON="Automatico"]
-		Setpoint item=Riscaldamento_ManualSetPoint label="Temp. [%.1f °C]" minValue=15 maxValue=25 step=0.5 //Set temperatura
+		Setpoint item=Riscaldamento_ManualSetPoint label="Temp. Target [%.1f °C]" minValue=15 maxValue=25 step=0.5 //Set temperatura
 	}	
 	Frame label="Gestione presenza" {
 		Text item=Presence label="Non c'è nessuno!" visibility=[Presence==OFF] 
@@ -64,11 +54,11 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	}
 
 	Frame label="Stanze" {
-		Text label="Cucina" icon="kitchen" { 
-			Switch item=SwitchBinary_Frigorifero_Cucina_ZW3 icon="light" mappings=[ON="ON", OFF="OFF"]
-				Text item=MeterKwh_Frigorifero_Cucina_ZW3 icon="energy"
-				Text item=SensorPower_Frigorifero_Cucina_ZW3 icon="energy"
-		}
+		// Text label="Cucina" icon="kitchen" { 
+		// 	Switch item=SwitchBinary_Frigorifero_Cucina_ZW3 icon="light" mappings=[ON="ON", OFF="OFF"]
+		// 		Text item=MeterKwh_Frigorifero_Cucina_ZW3 icon="energy"
+		// 		Text item=SensorPower_Frigorifero_Cucina_ZW3 icon="energy"
+		// }
 		Text label="Camera Alice" icon="bedroom" {
 			//Switch item=SwitchBinary1_LuceLatoPorta_Cameretta_ZW18 mappings=[ON="Premi"]
 			Switch item=SwitchBinary1_LuceLatoPorta_Cameretta_ZW18 mappings=[ON="ACCENDI"] icon="switch-off" visibility=[SwitchBinary1_LuceLatoPorta_Cameretta_ZW18 == OFF]
@@ -82,9 +72,9 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		}
 		Text label="Salone" icon="player" {
 			Switch item=SwitchBinary2_TV_Salone_ZW22 mappings=[ON="ACCENDI"] icon="switch-off" visibility=[SwitchBinary2_TV_Salone_ZW22 == OFF]
-			Switch item=SwitchBinary2_TV_Salone_ZW22 mappings=[ON="SPEGNI"] icon="switch-on" visibility=[SwitchBinary2_TV_Salone_ZW22 == ON]
+			Switch item=SwitchBinary2_TV_Salone_ZW22 mappings=[OFF="SPEGNI"] icon="switch-on" visibility=[SwitchBinary2_TV_Salone_ZW22 == ON]
 			Switch item=SwitchBinary1_AlberoNatale_Salone_ZW22 mappings=[ON="ACCENDI"] icon="switch-off" visibility=[SwitchBinary1_AlberoNatale_Salone_ZW22 == OFF]
-			Switch item=SwitchBinary1_AlberoNatale_Salone_ZW22 mappings=[ON="SPEGNI"] icon="switch-on" visibility=[SwitchBinary1_AlberoNatale_Salone_ZW22 == ON]
+			Switch item=SwitchBinary1_AlberoNatale_Salone_ZW22 mappings=[OFF="SPEGNI"] icon="switch-on" visibility=[SwitchBinary1_AlberoNatale_Salone_ZW22 == ON]
 			Default item=Prodino_temp
 			Default item=Prodino_umid
 		}
@@ -94,7 +84,8 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Text label="Studio" icon="office" {
 			Default item=SensorTemperature_MotionSensor_Studio_ZW10 icon="temperature"
 			Default item=SensorLuminance_MotionSensor_Studio_ZW10 icon="rgb"
-			Default item=AlarmMotion_MotionSensor_Studio_ZW10 icon="motion"
+			Default item=AlarmMotion_MotionSensor_Studio_ZW10 icon="motion" 
+			Default item=StudioLuce icon=light
 		}
 	}
 	Frame label="Ambienti" {
@@ -161,11 +152,11 @@ sitemap Casatenovo label="Benvenuto a Casa"
 				Default item=AlarmMotion_MotionSensor_Studio_ZW10
 				Default item=BatteryLevel_MotionSensor_Studio_ZW10
 			}
-			Text label="WallPlug" icon="cellar"	{
-				Text item=MeterKwh_Frigorifero_Cucina_ZW3
-				Text item=SensorPower_Frigorifero_Cucina_ZW3
-				Text item=SwitchBinary_Frigorifero_Cucina_ZW3
-			}
+			// Text label="WallPlug" icon="cellar"	{
+			// 	Text item=MeterKwh_Frigorifero_Cucina_ZW3
+			// 	Text item=SensorPower_Frigorifero_Cucina_ZW3
+			// 	Text item=SwitchBinary_Frigorifero_Cucina_ZW3
+			// }
 			Text label="Energy Driven Switch C" icon="cellar"{
 				Text item=MeterVoltage_R220P_QE_ZW11
 				Text item=MeterCurrent_R220P_QE_ZW11
@@ -258,12 +249,49 @@ sitemap Casatenovo label="Benvenuto a Casa"
 			}
 		}
 	}
+	Frame label="System ADSL Ping"
+		{
+			Text label="(Google DNS IP)" {
+			Frame label="Online Status" {
+				Text item=GoogleIP label="[%s]"
+			}
+			Frame label="Latenza (ms)" {
+				Text item=GoogleIPlt label="Device Response Time [%s]"
+			}
+			Frame label="LastSeen" {
+				Text item=GoogleIPls
+			}
+			}
+		}
 	Frame label="TVCC"
 		{
 			Text label="Camera1" icon=camera {
-			//Image label="PI"  url="http://192.168.178.58:8081/"
-			Video url="http://192.168.178.58:8081/" encoding="mjpeg"
+			Video url="http://192.168.178.58:8081"  encoding="mjpeg"
 			}
+		
+			Text label="Camera2" icon=camera {
+			Video url="http://192.168.178.58:8082"  encoding="mjpeg"
+			}	
+
+		// 	Text label="BabyMonitor" icon="camera"{
+		// 	//Image url="http://google.com/leaveLinkAsThis" item=ONVIF1Image refresh=2000
+		// 	//Video url="rtsp://192.168.178.72:6554/stream_0/" encoding="mjpeg"
+		// 	Video url="http://192.168.178.72:9527/ipc_snapshot.cgi" 
+		// 	Switch item=ONVIF1Direction icon=movecontrol label="Camera Direction" mappings=[0="Room", 1="Cot", 2="Door"]
+		// 	Switch item=ONVIF1UpdateImage
+		// 	Default item=ONVIF1MotionAlarm icon=siren
+		// 	Default item=ONVIF1AudioAlarm icon=siren
+		// 	Text label="Advanced Controls" icon="settings"{
+		// 		Switch item=ONVIF1EnableMotion
+		// 		Default item=ONVIF1EnableAudioAlarm
+		// 		Default item=ONVIF1AudioThreshold icon=recorder
+		// 		Slider item=ONVIF1LED
+		// 		Default item=ONVIF1AutoLED
+		// 		Slider item=ONVIF1Pan icon=movecontrol
+		// 		Slider item=ONVIF1Tilt icon=movecontrol
+		// 		Slider item=ONVIF1Zoom icon=zoom
+        // 	}
+    	// }
 		}
 	
 	// Frame label="Grafici" {
