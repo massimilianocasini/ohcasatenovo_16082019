@@ -12,12 +12,11 @@ Switch  fboxWifi24         "2,4GHz Wifi"        (gFritz)         {fritzboxtr064=
 Switch  fboxWifi50          "5,0GHz Wifi"          (gFritz)       {fritzboxtr064="wifi50Switch"}
 Switch  fboxGuestWifi       "Guest Wifi"            (gFritz)      {fritzboxtr064="wifiGuestSwitch"}
 Contact repeater1160      "Presence Repeater 1160 [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:62-FF-4D-83-EE-03" }
-Contact frascati2      "Presence Frascati2 [MAP(presence.map):%s]"    (gFritz,gIP)    {fritzboxtr064="maconline:B8-27-EB-C1-A2-90" }
+//Contact frascati2      "Presence Frascati2 [MAP(presence.map):%s]"    (gFritz,gIP)    {fritzboxtr064="maconline:B8-27-EB-C1-A2-90" }
 Contact repeater310      "Presence Repeater 310 [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:E6-28-6D-34-71-49" }
-Contact prodino     "Presence Prodino [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:5C-CF-7F-13-6E-D7"}
+Contact prodino    "Presence Prodino [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:5C-CF-7F-13-6E-D7"}
 
 // WAN statistics
-
 String  fboxWanAccessType "FBox WAN access type [%s]" (gFritz)  {fritzboxtr064="wanWANAccessType"}
 Number  fboxWanLayer1UpstreamMaxBitRate "FBox WAN us max bit rate [%s]" (gFritz)  {fritzboxtr064="wanLayer1UpstreamMaxBitRate"}
 Number  fboxWanLayer1DownstreamMaxBitRate "FBox WAN ds max bit rate [%s]" (gFritz)  {fritzboxtr064="wanLayer1DownstreamMaxBitRate"}

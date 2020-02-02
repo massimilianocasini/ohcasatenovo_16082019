@@ -7,8 +7,8 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	}
 	Frame label="Stato generale" {
 		Group item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
-		Text item=Prodino0_in1  labelcolor=[OFF="green", ON="red"] valuecolor=[OFF="green", ON="red"]
-		Switch item=Prodino0_out1 label="Antifurto INS/DIS" mappings=[ON="Premi"]
+		Text item=Prodino0_in1  labelcolor=[DISINSERITO="green", INSERITO="red"] valuecolor=[DISINSERITO="green", INSERITO="red"]
+		Switch item=Prodino0_out1 label="Antifurto INS/DIS[]" mappings=[ON="Premi"]
 	//	Text item=MeterVoltage_R220P_QE_ZW11 icon="energy" labelcolor=[>226="green",>220="orange",<220="red"] valuecolor=[>226="green",>220="orange",<220="red"]	
 	//	Default item=MeterWatts_R220P_QE_ZW11 icon="battery"
 	//	Text item=WPS104_tensione_potenza label="V/W [%s]"
@@ -37,7 +37,7 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	}
 	Frame label="Riscaldamento"	{
 		//Group item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
-		Switch item=SwitchBinary2_Caldaia_Tecnico_ZW22 mappings=[ON="Accesa", OFF="Spenta"]
+		Text item=SwitchBinary2_Caldaia_Tecnico_ZW22 valuecolor=[ON="green", OFF="red"]
 		Switch item=Riscaldamento_Auto mappings=[OFF="Manuale", ON="Automatico"]
 		Setpoint item=Riscaldamento_ManualSetPoint label="Temp. Target [%.1f °C]" minValue=15 maxValue=25 step=0.5 //Set temperatura
 	}	
@@ -48,7 +48,7 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	}
 	Frame label="Dispositivi IP" {
 		Default item=repeater1160 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
-		Default item=frascati2 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
+		//Default item=frascati2 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
 		Default item=repeater310 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
 		Default item=prodino icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
 	}
@@ -252,17 +252,22 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	Frame label="System ADSL Ping"
 		{
 			Text label="(Google DNS IP)" {
-			Frame label="Online Status" {
+				Frame label="Online Status" {
 				Text item=GoogleIP label="[%s]"
-			}
-			Frame label="Latenza (ms)" {
+				}
+				Frame label="Latenza (ms)" {
 				Text item=GoogleIPlt label="Device Response Time [%s]"
-			}
-			Frame label="LastSeen" {
+				}
+				Frame label="LastSeen" {
 				Text item=GoogleIPls
-			}
+				}
 			}
 		}
+	Frame label="System" {
+	//	Selection item=cm3panel label="CM3-Panel" mappings=[Startx="StartX", PowerOff="Shut down", Reboot="Reboot"]
+		Selection item=cm3panel label="CM3-Panel" mappings=[Startx="StartX", Reboot="Reboot"]
+		Selection item=cm3home label="CM3-Home" mappings=[PowerOff="Shut down", Reboot="Reboot"]
+	}
 	Frame label="TVCC"
 		{
 			Text label="Camera1" icon=camera {

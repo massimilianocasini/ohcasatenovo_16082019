@@ -13,4 +13,4 @@ Number Proxy_prodino_temp "Antifurto Temperatura [%.1f °C]"  <temperature> (gAl
 Number Prodino_umid "Antifurto Umidità [%.1f %%]"     <humidity> (gAll, gAntifurto, gInfluxdb)  {channel="mqtt:topic:myUnsecureBroker:prodino:umid_prodino"}
 
 //StudioLuce
-Switch StudioLuce "Luce Studio" <light> (gAll, gStudio) ["Lighting"]
+Switch StudioLuce "Luce Studio" <light> (gAll, gStudio) ["Lighting"] 

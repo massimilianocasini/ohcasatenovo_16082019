@@ -4,6 +4,7 @@ rule "OffSet DHTT"
     then
         Proxy_prodino_temp.sendCommand((Prodino_temp.state as DecimalType) -1.0)
     end
+    
 rule "OffSet Temperatura Camera Alice"
     when
         Item SensorTemperature3_DS1820_Cameretta_ZW17 received update //or

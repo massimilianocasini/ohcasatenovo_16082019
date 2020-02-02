@@ -1,12 +1,15 @@
-rule "Accendi luce quando si apre la serranda"
+rule "Invia messaggio a BOT quando si apre/chiude la serranda"
     when
-        Item SensorBinary1_Serranda_Garage_ZW16 changed from OFF to ON
+        Item SensorBinary1_Serranda_Garage_ZW16 changed
     then
-        SwitchBinary2_Luce_Garage_ZW15.sendCommand(ON)
-    end
+        if(SensorBinary1_Serranda_Garage_ZW16.state == ON) {
+            sendTelegram("bot1", "Garage Serranda Aperta") 
+        }
+        else 
+            sendTelegram("bot1", "Garage Serranda Chiusa") 
+end
 
 rule "Accensione luce Garage"
-
 when 
     Item SwitchBinary2_Luce_Garage_ZW15 changed
 then

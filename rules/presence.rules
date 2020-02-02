@@ -50,7 +50,8 @@ when
         Item Presence changed
 then
         if (Presence.state==ON && Presence_Auto.state==ON){
-        SwitchBinary1_AlberoNatale_Salone_ZW22.sendCommand(ON) //Albero
+        // SwitchBinary1_AlberoNatale_Salone_ZW22.sendCommand(ON) //Albero
+        StudioLuce.sendCommand(ON)
         }
 end
 

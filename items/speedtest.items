@@ -1,4 +1,4 @@
-Group  gSpeedtest <"network-icon"> (gAll)
+Group gSpeedtest <"network-icon"> (gAll)
 
 String     SpeedtestSummary        "Speedtest [%s]"             <"speedtest_network">       (gSpeedtest)
 Number     SpeedtestResultPing     "Ping [%.3f ms]"             <"speedtest_next5">         (gSpeedtest)
