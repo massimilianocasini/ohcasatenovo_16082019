@@ -115,4 +115,4 @@ Switch SwitchBinary2_TV_Salone_ZW22 "TV, Ampli" <cinema> (gAll, gSalone) ["Switc
 //FGS221 Double Relay Switch 2x1.5kW, Caldaia
 Switch FGS221_23_switch_binary ""  (gAll) {channel="zwave:device:512:node23:switch_binary"}
 Switch FGS221_23_switch_binary1 "Libero" <climate> (gAll, gCaldaia) {channel="zwave:device:512:node23:switch_binary1"}
-Switch SwitchBinary2_Caldaia_Tecnico_ZW22 "Caldaia [MAP(caldaia.map):%s]" <climate> (gAll, gCaldaia) ["Switchable"]  {channel="zwave:device:512:node23:switch_binary2"}
+Switch SwitchBinary2_Caldaia_Tecnico_ZW22 "Caldaia [MAP(caldaia.map):%s]" <fire> (gAll, gCaldaia) ["Switchable"]  {channel="zwave:device:512:node23:switch_binary2"}

@@ -5,8 +5,7 @@ Number I_AC_Current  "I-AC Total Current [%.0f A]"  (gFVI) {channel="modbus:data
 Number I_AC_Current_SF   "I-AC Current scale factor"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_Current_SF:number"}
 Number I_AC_Current_POST "I-AC Current POST (Produzione) [%.0f A]" (gFVI, gInfluxdb)
 
-//Number I_AC_VoltageAB_   "I-AC Voltage Phase AB [JS(divide.js):%s 10V]"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_VoltageAB:number"}
-Number I_AC_VoltageAB   "I-AC Voltage Phase AB [%.0f V]"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_VoltageAB:number"}
+Number I_AC_VoltageAB "I-AC Voltage Phase AN [%.0f V]"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_VoltageAB:number"}
 Number I_AC_Voltage_SF (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_Voltage_SF:number"}
 Number I_AC_VoltageAB_POST "Tensione [%.0f V]" <energy> (gFVI, gInfluxdb) ["iss:type:DevGenericSensor","iss:unit:Volt","iss:room:Fotovoltaico"]
 
@@ -56,10 +55,10 @@ Number M_AC_Current_POST "M-AC Current POST (Consumo attuale) [%.1f A]" (gFVM, g
 Number M_AC_Freq   "M-AC Frequency [JS(divide.js):%s 100H]" (gFVM)  {channel="modbus:data:localhostTCP:frequency:M_AC_Freq:number"}
 //Number M_AC_Freq_SF_   "M-AC Frequency Scale Factor"  (gFVM)  {channel="modbus:data:localhostTCP:frequency:M_AC_Freq_SF:number"}
 
-Number M_AC_Power   "M-Total Power (immessa in rete) [%.0f W]" (gFVM)  {channel="modbus:data:localhostTCP:realPower:M_AC_Power:number"}
-Number M_AC_Power_POST_C "Immessa in rete [%.2f kW]" <energy> (gInfluxdb) ["iss:type:DevElectricity","iss:unit:KW","iss:room:Fotovoltaico"]
-Number M_AC_Power_SF   "M-Total Power SF" (gFVM)   {channel="modbus:data:localhostTCP:realPower:M_AC_Power_SF:number"} 
-Number M_AC_Power_POST "Immessa in rete [%.2f kW]" <energy> (gFVM, gInfluxdb)
+Number M_AC_Power   "M-Total Power [%.0f W]" (gFVM)  {channel="modbus:data:localhostTCP:realPower:M_AC_Power:number"}
+Number M_AC_Power_SF   "M-Total Power SF" (gFVM)   {channel="modbus:data:localhostTCP:realPower:M_AC_Power_SF:number"}
+Number M_AC_Power_POST_abs "M-Total Power abs [%.2f kW]" <energy> (gInfluxdb) ["iss:type:DevElectricity","iss:unit:KW","iss:room:Fotovoltaico"] 
+Number M_AC_Power_POST "M-Total Power [%.2f kW]" <energy> (gFVM, gInfluxdb)
 
 Number M_AC_VA   "M-Total AC Apparent Power (sum of active phases) [%.1f VA] " (gFVM)   {channel="modbus:data:localhostTCP:apparentPower:M_AC_VA:number"}
 
