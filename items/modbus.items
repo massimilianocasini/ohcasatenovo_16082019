@@ -25,8 +25,8 @@ Number I_AC_VAR   "I-Reactive Power [%.1f VAR]"  (gFVI) {channel="modbus:data:lo
 Number I_AC_PF   "I-Power Factor"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_PF:number"}
 //Number I_AC_PF_SF_  "I-Power Factor Scale factor"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_PF_SF:number"}
 
-Number I_AC_Energy_WH   "I-AC Lifetime Energy production [%.1f Wh]"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_Energy_WH:number"}
-//Number I_AC_Energy_WH_SF_   "I-C Lifetime Energy production Scale factor"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_Energy_WH_SF:number"}
+Number I_AC_Energy_WH   "I-AC Lifetime Energy production [%.0f Wh]"  (gFVI, gInfluxdb) {channel="modbus:data:localhostTCP:inverter:I_AC_Energy_WH:number"}
+Number I_AC_Energy_WH_SF   "I-C Lifetime Energy production Scale factor"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_AC_Energy_WH_SF:number"}
 
 Number I_DC_Current   "I-DC Current [%.1f A]"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_DC_Current:number"}
 //Number I_DC_Current_SF_   "I-DC Current Scale factor"  (gFVI) {channel="modbus:data:localhostTCP:inverter:I_DC_Current_SF:number"}
@@ -57,8 +57,8 @@ Number M_AC_Freq   "M-AC Frequency [JS(divide.js):%s 100H]" (gFVM)  {channel="mo
 
 Number M_AC_Power   "M-Total Power [%.0f W]" (gFVM)  {channel="modbus:data:localhostTCP:realPower:M_AC_Power:number"}
 Number M_AC_Power_SF   "M-Total Power SF" (gFVM)   {channel="modbus:data:localhostTCP:realPower:M_AC_Power_SF:number"}
-Number M_AC_Power_POST_abs "M-Total Power abs [%.2f kW]" <energy> (gInfluxdb) ["iss:type:DevElectricity","iss:unit:KW","iss:room:Fotovoltaico"] 
-Number M_AC_Power_POST "M-Total Power [%.2f kW]" <energy> (gFVM, gInfluxdb)
+Number M_AC_Power_POST_abs "M-Total Power abs [%.2f kW]" <softener> (gInfluxdb) ["iss:type:DevElectricity","iss:unit:KW","iss:room:Fotovoltaico"] 
+Number M_AC_Power_POST "M-Total Power [%.2f kW]" <softener> (gFVM, gInfluxdb)
 
 Number M_AC_VA   "M-Total AC Apparent Power (sum of active phases) [%.1f VA] " (gFVM)   {channel="modbus:data:localhostTCP:apparentPower:M_AC_VA:number"}
 

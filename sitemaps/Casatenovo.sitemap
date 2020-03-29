@@ -6,7 +6,7 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Text item=Temperatura_esterna
 	}
 	Frame label="Stato generale" {
-		Group item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
+		Text item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
 		Text item=Prodino0_in1  labelcolor=[DISINSERITO="green", INSERITO="red"] valuecolor=[DISINSERITO="green", INSERITO="red"]
 		Switch item=Prodino0_out1 label="Antifurto INS/DIS[]" mappings=[ON="Premi"]
 	//	Text item=MeterVoltage_R220P_QE_ZW11 icon="energy" labelcolor=[>226="green",>220="orange",<220="red"] valuecolor=[>226="green",>220="orange",<220="red"]	
@@ -20,6 +20,24 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Default item=AC_Power_USED
 		Default item=I_AC_VoltageAB_POST labelcolor=[>226="green",>220="orange",<220="red"] valuecolor=[>226="green",>220="orange",<220="red"]
 		
+		Text label="Dati aggregati" icon=line {
+			Text label="Odierni" icon=calendar {
+				Default item=SE5000_AggregateDayProduction  //Produzione odierna
+				Default item=SE5000_AggregateDayImport //Importata odierna
+				Default item=SE5000_AggregateDayConsumption //Consumo odierno
+				Default item=SE5000_AggregateDayExport //Esportata odierna
+				Default item=SE5000_AggregateDayAutoconsumo //Autoconsumo odierno
+			}
+			Text label="Valori ultimi 7gg" icon=calendar {
+				Default item=SE5000_AggregateWeekProduction
+				Default item=SE5000_AggregateWeekImport
+				Default item=SE5000_AggregateWeekConsumption
+				Default item=SE5000_AggregateWeekExport
+				Default item=SE5000_AggregateWeekAutoconsumo
+			}
+		}
+		
+		
 
 		//Default item=SE5000_Live_Consumption
 		//Default item=SE5000_Live_Import
@@ -31,15 +49,70 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		// Default item=M_AC_Current_POST
 		//Group item=gFVI label="Fotovoltaico Inverter" icon="energy"
 		//Group item=gFVM label="Fotovoltaico Meter" icon="energy"
-		Text label="SolarEdge" icon=solarplant { 
+		Text label="SolarEdgeCloud" icon=line { 
 			Webview url="https://monitoringpublic.solaredge.com/solaredge-web/p/kiosk?guid=35f0e451-ba70-4008-968b-414eaedf1395" height=30
 			}
 	}
+
+	Frame label="Condizionamento" {
+		Switch item=gORCondSwitch label="Stato OR" mappings=[ON="ON", OFF="OFF"] 
+		Frame label="Studio" {
+			Switch item=DaikinACUnit_Power_Studio  mappings=[ON="ON", OFF="OFF"]
+			Setpoint item=DaikinACUnit_SetPoint_Studio 
+		}
+		Frame label="Letto" {
+			Switch item=DaikinACUnit_Power_Letto  mappings=[ON="ON", OFF="OFF"]
+			Setpoint item=DaikinACUnit_SetPoint_Letto 
+		}
+		Frame label="Alice" {
+			Switch item=DaikinACUnit_Power_Alice  mappings=[ON="ON", OFF="OFF"]
+			Setpoint item=DaikinACUnit_SetPoint_Alice 
+		}
+		Frame label="Salotto" {
+			Switch item=DaikinACUnit_Power_Salotto  mappings=[ON="ON", OFF="OFF"]
+			Setpoint item=DaikinACUnit_SetPoint_Salotto 
+		}
+		Frame label="Controlli avanzati" {
+				Text label="Studio" icon=climate {
+					Switch item=DaikinACUnit_Power_Studio
+					Setpoint item=DaikinACUnit_SetPoint_Studio visibility=[DaikinACUnit_Power_Studio==ON]
+					Selection item=DaikinACUnit_Mode_Studio mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Studio==ON]
+					Selection item=DaikinACUnit_Fan_Studio mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Studio==ON]
+					Text item=DaikinACUnit_IndoorTemperature_Studio
+					Text item=DaikinACUnit_OutdoorTemperature_Studio
+				}
+				Text label="Letto" icon=climate {
+					Switch item=DaikinACUnit_Power_Letto
+					Setpoint item=DaikinACUnit_SetPoint_Letto visibility=[DaikinACUnit_Power_Letto==ON]
+					Selection item=DaikinACUnit_Mode_Letto mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Letto==ON]
+					Selection item=DaikinACUnit_Fan_Letto mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Letto==ON]
+					Text item=DaikinACUnit_IndoorTemperature_Letto
+					Text item=DaikinACUnit_OutdoorTemperature_Letto
+				}
+				Text label="Alice" icon=climate {
+					Switch item=DaikinACUnit_Power_Alice
+					Setpoint item=DaikinACUnit_SetPoint_Alice visibility=[DaikinACUnit_Power_Alice==ON]
+					Selection item=DaikinACUnit_Mode_Alice mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Alice==ON]
+					Selection item=DaikinACUnit_Fan_Alice mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Alice==ON]
+					Text item=DaikinACUnit_IndoorTemperature_Alice
+					Text item=DaikinACUnit_OutdoorTemperature_Alice
+				}
+					Text label="Salotto" icon=climate {
+					Switch item=DaikinACUnit_Power_Salotto
+					Setpoint item=DaikinACUnit_SetPoint_Salotto visibility=[DaikinACUnit_Power_Salotto==ON]
+					Selection item=DaikinACUnit_Mode_Salotto mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Salotto==ON]
+					Selection item=DaikinACUnit_Fan_Salotto mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Salotto==ON]
+					Text item=DaikinACUnit_IndoorTemperature_Salotto
+					Text item=DaikinACUnit_OutdoorTemperature_Salotto
+				}
+		}
+
+	}
 	Frame label="Riscaldamento"	{
-		//Group item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
+		Text item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
 		Text item=SwitchBinary2_Caldaia_Tecnico_ZW22 valuecolor=[ON="green", OFF="red"]
 		Switch item=Riscaldamento_Auto mappings=[OFF="Manuale", ON="Automatico"]
-		Setpoint item=Riscaldamento_ManualSetPoint label="Temp. Target [%.1f °C]" minValue=15 maxValue=25 step=0.5 //Set temperatura
+		Setpoint item=Riscaldamento_ManualSetPoint label="Temp. Target [%.1f °C]" minValue=15 maxValue=25 step=0.5 visibility=[Riscaldamento_Auto==OFF] //Set temperatura
 	}	
 	Frame label="Gestione presenza" {
 		Text item=Presence label="Non c'è nessuno!" visibility=[Presence==OFF] 
@@ -52,7 +125,9 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Default item=repeater310 icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
 		Default item=prodino icon="network" valuecolor=[OPEN="green",CLOSED="red"] labelcolor=[OPEN="green", CLOSED="red"]
 	}
-
+	// Frame label="SystemInfo" {
+	// 	Group item=gSystemInfo
+	// }
 	Frame label="Stanze" {
 		// Text label="Cucina" icon="kitchen" { 
 		// 	Switch item=SwitchBinary_Frigorifero_Cucina_ZW3 icon="light" mappings=[ON="ON", OFF="OFF"]

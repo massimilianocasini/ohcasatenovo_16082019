@@ -1,4 +1,4 @@
-Bridge modbus:tcp:localhostTCP [ host="192.168.178.4", port=502, id=1, timeBetweenReconnectMillis=250, connectMaxTries=3 ] {
+Bridge modbus:tcp:localhostTCP [ host="192.168.178.6", port=502, id=1, timeBetweenReconnectMillis=250, connectMaxTries=3 ] {
     // The base Register Common Block is set to 10001 (MODBUS PLC address [base 1]), or 10000 (MODBUS Protocol Address [base 0]).
     Bridge poller inverter [ start=40071, length=38, refresh=5000, type="holding" ] {
         Thing data I_AC_Current [readStart="40071", readValueType="uint16"]
