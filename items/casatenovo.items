@@ -19,7 +19,6 @@ Group gFotoVoltaico
 Group gZwave
 Group gSystemInfo
 
-
 Group:Number:AVG gAvgTemperatura "Temp.media interna [%.1f °C]" (gInfluxdb, gTemperatura) ["iss:type:DevTemperature","iss:unit:°C","iss:room:Generale"]
 Group:Switch:OR(ON, OFF) gMotion "Stato presenza [MAP(ir.map):%s]"
 
@@ -27,6 +26,7 @@ Group:Switch:OR(ON, OFF) gMotion "Stato presenza [MAP(ir.map):%s]"
 //Gestione Riscaldamento
 Switch Riscaldamento_Auto "Modo riscaldamento" <temperature> //Riscaldamento automatico o manuale
 Number Riscaldamento_ManualSetPoint "SetPoint manuale [%.1f °C]" <temperature>  //SetPoint manuale riscaldamento
+Number Riscaldamento_Auto_SP "SetPoint Auto [%.1f °C]" <temperature>
 
 // gestione presenza
 Group:Switch:AND(OFF,ON) gPresence_Sensors <presence> // all presence sensors belong to this group
@@ -41,14 +41,14 @@ Switch Presence_Auto <switch>  //Presenza automatica o manuale
 
 //FGMS001 Motion Sensor, Studio
 Number:Temperature SensorTemperature_MotionSensor_Studio_ZW10 "Studio Temperatura [%.1f %unit%]" <temperature>  (gAll, gTemperatura, gAvgTemperatura, gStudio, gInfluxdb,gZwave) ["CurrentTemperature","Temperature", "Measurement"] {channel="zwave:device:512:node10:sensor_temperature"}
-Number SensorLuminance_MotionSensor_Studio_ZW10 "Luminosità [%.1f]" <rgb> (gAll, gStudio, gInfluxdb,gZwave)  {channel="zwave:device:512:node10:sensor_luminance"}
+Number SensorLuminance_MotionSensor_Studio_ZW10 "Luminosità [%.1f]" <rgb> (gAll, gStudio,gZwave)  {channel="zwave:device:512:node10:sensor_luminance"}
 Switch AlarmMotion_MotionSensor_Studio_ZW10 "Studio Motion[MAP(ir.map):%s]" <motion> (gAll, gStudio, gMotion, gPresence_Sensors,gZwave)  {channel="zwave:device:512:node10:alarm_motion"}
 Number BatteryLevel_MotionSensor_Studio_ZW10 "Studio Stato batteria [%d %%]" <battery> (gAll, gStudio, gZwave) {channel="zwave:device:512:node10:battery-level"}
 
 
 //Energy Driven Switch C, Quadro elettrico
-Switch WPS104_11_switch_binary "Switch esterno" (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:switch_binary"}
-Number SensorPower_R220P_QE_ZW11  "Sensore di potenza [%.0f]" <energy> (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:sensor_power"}
+Switch WPS104_11_switch_binary "Switch esterno" (gAll, gQuadroElettrico) {channel="zwave:device:512:node11:switch_binary"}
+Number SensorPower_R220P_QE_ZW11  "Sensore di potenza [%.0f]" <energy> (gAll, gQuadroElettrico) {channel="zwave:device:512:node11:sensor_power"}
 Number:ElectricPotential MeterVoltage_R220P_QE_ZW11 "Tensione rete" <energy> (gAll, gQuadroElettrico, gInfluxdb) ["Voltage"] {channel="zwave:device:512:node11:meter_voltage"}
 Number MeterPowerFactor_R220P_QE_ZW11 "Sfasamento rete [%.0f ]" <energy> (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:meter_powerfactor"}
 Number:ElectricCurrent MeterCurrent_R220P_QE_ZW11 "Corrente assorbita" <energy> (gAll, gQuadroElettrico, gInfluxdb) {channel="zwave:device:512:node11:meter_current"}
@@ -113,7 +113,6 @@ Number MeterKwh_Pergotenda_Giardino_ZW21  "Energia consumata" (gAll, gGiardino) 
 Switch FGS221_22_switch_binary ""  (gAll) {channel="zwave:device:512:node22:switch_binary"}
 Switch SwitchBinary1_AlberoNatale_Salone_ZW22 "Albero di Natale" (gAll, gSalone) ["Switchable"] {channel="zwave:device:512:node22:switch_binary1"}
 Switch SwitchBinary2_TV_Salone_ZW22 "TV, Ampli" <cinema> (gAll, gSalone) ["Switchable"] {channel="zwave:device:512:node22:switch_binary2"}
-
 
 //FGS221 Double Relay Switch 2x1.5kW, Caldaia
 Switch FGS221_23_switch_binary ""  (gAll) {channel="zwave:device:512:node23:switch_binary"}

@@ -1,9 +1,9 @@
-rule "OffSet DHTT"
-    when
-        Item Prodino_temp received update
-    then
-        Proxy_prodino_temp.sendCommand((Prodino_temp.state as DecimalType) -1.0)
-    end
+// rule "OffSet DHTT"
+//     when
+//         Item Prodino_temp received update
+//     then
+//         Proxy_prodino_temp.sendCommand((Prodino_temp.state as DecimalType) -1.0)
+//     end
     
 rule "OffSet Temperatura Camera Alice"
     when

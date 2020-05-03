@@ -1,0 +1,6 @@
+Number:Temperature Aquara1T "Aquara1T [%.1f %unit%]" <temperature> (gAll, gTemperatura, gAvgTemperatura, gInfluxdb) {channel="zigbee:device:15f9ff9c:00158d000418a54c:00158D000418A54C_1_temperature"}
+Number:Pressure Aquara1P "Aquara1P [%.1f %unit%]"<pressure> (gAll, gInfluxdb) {channel="zigbee:device:15f9ff9c:00158d000418a54c:00158D000418A54C_1_pressure"}
+Number Aquara1H "Aquara1H [%.1f %%]" <humidity> (gAll, gInfluxdb) {channel="zigbee:device:15f9ff9c:00158d000418a54c:00158D000418A54C_1_humidity"}
+
+Number:Temperature Aquara2T "Aquara2T [%.1f %unit%]" <temperature> (gAll, gTemperatura, gAvgTemperatura, gInfluxdb) {channel="zigbee:device:15f9ff9c:00158d0003cc6a12:00158D0003CC6A12_1_temperature"}
+Number Aquara2H "Aquara2H [%.1f %%]" <humidity> (gAll, gInfluxdb) {channel="zigbee:device:15f9ff9c:00158d0003cc6a12:00158D0003CC6A12_1_humidity"}

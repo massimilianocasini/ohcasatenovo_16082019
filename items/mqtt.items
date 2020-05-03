@@ -8,9 +8,9 @@ Switch Prodino0_out1 "Chiave"    <switch> (gAll, gAntifurto) ["iss:type:DevSwitc
 //Switch prodino0_out2 "Out 2"           (gAll, gAntifurto)      {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-1-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-1-0]"}
 //Switch prodino0_out3 "Out 3"           (gAll, gAntifurto)     {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-2-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-2-0]"}
 //Switch prodino0_out4 "Out 4"           (gAll, gAntifurto)     {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-3-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-3-0]"}
-Number Prodino_temp "Antifurto Temperatura [%.1f °C]"  <temperature> (gAll, gTemperatura, gAntifurto, gInfluxdb) {channel="mqtt:topic:myUnsecureBroker:prodino:temp_prodino"}
-Number Proxy_prodino_temp "Antifurto Temperatura [%.1f °C]"  <temperature> (gAll, gAntifurto, gInfluxdb) 
-Number Prodino_umid "Antifurto Umidità [%.1f %%]"     <humidity> (gAll, gAntifurto, gInfluxdb)  {channel="mqtt:topic:myUnsecureBroker:prodino:umid_prodino"}
+//Number Prodino_temp "Antifurto Temperatura [%.1f °C]"  <temperature> (gAll, gTemperatura, gAntifurto, gInfluxdb) {channel="mqtt:topic:myUnsecureBroker:prodino:temp_prodino"}
+//Number Proxy_prodino_temp "Antifurto Temperatura [%.1f °C]"  <temperature> (gAll, gAntifurto, gInfluxdb) 
+//Number Prodino_umid "Antifurto Umidità [%.1f %%]"     <humidity> (gAll, gAntifurto, gInfluxdb)  {channel="mqtt:topic:myUnsecureBroker:prodino:umid_prodino"}
 
-//StudioLuce
+//StudioLuce 
 Switch StudioLuce "Luce Studio" <light> (gAll, gStudio) ["Lighting"] 

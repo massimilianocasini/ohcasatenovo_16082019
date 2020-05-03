@@ -22,7 +22,7 @@ Items
 
 	gInfluxdb* : strategy =  everyMinute, restoreOnStartup
 	
-	gAvgTemperatura : strategy = everyMinute, everyChange, restoreOnStartup
+	gAvgTemperatura : strategy = everyMinute, restoreOnStartup
 
 	gSpeedtest* : strategy = everyChange, restoreOnStartup
 }

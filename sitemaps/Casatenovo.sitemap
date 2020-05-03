@@ -4,14 +4,20 @@ sitemap Casatenovo label="Benvenuto a Casa"
 	Frame label=Oggi{
 		Text item=Date icon="calendar"
 		Text item=Temperatura_esterna
+		Text item=TempMinMax
 	}
 	Frame label="Stato generale" {
 		Text item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
+		Text label="Temperature/pressione Interna" icon=temperature {
+			Default item=Aquara1T
+			Default item=Aquara1H
+			Default item=Aquara2T
+			Default item=Aquara2H
+			Default item=SensorTemperature_MotionSensor_Studio_ZW10
+			Default item=Aquara1P
+		}
 		Text item=Prodino0_in1  labelcolor=[DISINSERITO="green", INSERITO="red"] valuecolor=[DISINSERITO="green", INSERITO="red"]
 		Switch item=Prodino0_out1 label="Antifurto INS/DIS[]" mappings=[ON="Premi"]
-	//	Text item=MeterVoltage_R220P_QE_ZW11 icon="energy" labelcolor=[>226="green",>220="orange",<220="red"] valuecolor=[>226="green",>220="orange",<220="red"]	
-	//	Default item=MeterWatts_R220P_QE_ZW11 icon="battery"
-	//	Text item=WPS104_tensione_potenza label="V/W [%s]"
 	}
 	Frame label="Fotovoltaico"	{
 		Default item=I_AC_Power_POST labelcolor=[>0="green",<=0="black"] valuecolor=[>0="green",<=0="black"] //Produzione
@@ -36,9 +42,6 @@ sitemap Casatenovo label="Benvenuto a Casa"
 				Default item=SE5000_AggregateWeekAutoconsumo
 			}
 		}
-		
-		
-
 		//Default item=SE5000_Live_Consumption
 		//Default item=SE5000_Live_Import
 		//Default item=SE5000_Live_Production
@@ -54,65 +57,69 @@ sitemap Casatenovo label="Benvenuto a Casa"
 			}
 	}
 
-	Frame label="Condizionamento" {
+	Frame label="Condizionamento generale" {
 		Switch item=gORCondSwitch label="Stato OR" mappings=[ON="ON", OFF="OFF"] 
-		Frame label="Studio" {
+	}
+	Frame label="Condizionamento Studio" {
 			Switch item=DaikinACUnit_Power_Studio  mappings=[ON="ON", OFF="OFF"]
-			Setpoint item=DaikinACUnit_SetPoint_Studio 
-		}
-		Frame label="Letto" {
+			Setpoint item=DaikinACUnit_SetPoint_Studio minValue=16 maxValue=30 step=0.5
+	}
+	Frame label="Condizionamento Letto" {
 			Switch item=DaikinACUnit_Power_Letto  mappings=[ON="ON", OFF="OFF"]
-			Setpoint item=DaikinACUnit_SetPoint_Letto 
-		}
-		Frame label="Alice" {
+			Setpoint item=DaikinACUnit_SetPoint_Letto minValue=16 maxValue=30 step=0.5
+	}
+	Frame label="Condizionamento Alice" {
 			Switch item=DaikinACUnit_Power_Alice  mappings=[ON="ON", OFF="OFF"]
-			Setpoint item=DaikinACUnit_SetPoint_Alice 
-		}
-		Frame label="Salotto" {
+			Setpoint item=DaikinACUnit_SetPoint_Alice minValue=16 maxValue=30 step=0.5
+	}
+	Frame label="Condizionamento Salotto" {
 			Switch item=DaikinACUnit_Power_Salotto  mappings=[ON="ON", OFF="OFF"]
-			Setpoint item=DaikinACUnit_SetPoint_Salotto 
-		}
-		Frame label="Controlli avanzati" {
+			Setpoint item=DaikinACUnit_SetPoint_Salotto minValue=16 maxValue=30 step=0.5
+	}
+	Frame label="Condizionamento controlli avanzati" {
 				Text label="Studio" icon=climate {
 					Switch item=DaikinACUnit_Power_Studio
-					Setpoint item=DaikinACUnit_SetPoint_Studio visibility=[DaikinACUnit_Power_Studio==ON]
+					Setpoint item=DaikinACUnit_SetPoint_Studio visibility=[DaikinACUnit_Power_Studio==ON] minValue=16 maxValue=30 step=0.5
 					Selection item=DaikinACUnit_Mode_Studio mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Studio==ON]
 					Selection item=DaikinACUnit_Fan_Studio mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Studio==ON]
+					Selection item=DaikinACUnit_Fan_Movement_Studio mappings=["STOPPED"="Ferma", "VERTICAL"="Verticale", "HORIZONTAL"="Orizzontale", "VERTICAL_AND_HORIZONTAL"="Verticale e orizzontale"] visibility=[DaikinACUnit_Power_Studio==ON]
 					Text item=DaikinACUnit_IndoorTemperature_Studio
 					Text item=DaikinACUnit_OutdoorTemperature_Studio
 				}
 				Text label="Letto" icon=climate {
 					Switch item=DaikinACUnit_Power_Letto
-					Setpoint item=DaikinACUnit_SetPoint_Letto visibility=[DaikinACUnit_Power_Letto==ON]
+					Setpoint item=DaikinACUnit_SetPoint_Letto visibility=[DaikinACUnit_Power_Letto==ON] minValue=16 maxValue=30 step=0.5
 					Selection item=DaikinACUnit_Mode_Letto mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Letto==ON]
 					Selection item=DaikinACUnit_Fan_Letto mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Letto==ON]
+					Selection item=DaikinACUnit_Fan_Movement_Letto mappings=["STOPPED"="Ferma", "VERTICAL"="Verticale", "HORIZONTAL"="Orizzontale", "VERTICAL_AND_HORIZONTAL"="Verticale e orizzontale"] visibility=[DaikinACUnit_Power_Letto==ON]
 					Text item=DaikinACUnit_IndoorTemperature_Letto
 					Text item=DaikinACUnit_OutdoorTemperature_Letto
 				}
 				Text label="Alice" icon=climate {
 					Switch item=DaikinACUnit_Power_Alice
-					Setpoint item=DaikinACUnit_SetPoint_Alice visibility=[DaikinACUnit_Power_Alice==ON]
+					Setpoint item=DaikinACUnit_SetPoint_Alice visibility=[DaikinACUnit_Power_Alice==ON] minValue=16 maxValue=30 step=0.5
 					Selection item=DaikinACUnit_Mode_Alice mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Alice==ON]
 					Selection item=DaikinACUnit_Fan_Alice mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Alice==ON]
+					Selection item=DaikinACUnit_Fan_Movement_Alice mappings=["STOPPED"="Ferma", "VERTICAL"="Verticale", "HORIZONTAL"="Orizzontale", "VERTICAL_AND_HORIZONTAL"="Verticale e orizzontale"] visibility=[DaikinACUnit_Power_Alice==ON]
 					Text item=DaikinACUnit_IndoorTemperature_Alice
 					Text item=DaikinACUnit_OutdoorTemperature_Alice
 				}
 					Text label="Salotto" icon=climate {
 					Switch item=DaikinACUnit_Power_Salotto
-					Setpoint item=DaikinACUnit_SetPoint_Salotto visibility=[DaikinACUnit_Power_Salotto==ON]
+					Setpoint item=DaikinACUnit_SetPoint_Salotto visibility=[DaikinACUnit_Power_Salotto==ON] minValue=16 maxValue=30 step=0.5
 					Selection item=DaikinACUnit_Mode_Salotto mappings=["AUTO"="Auto", "DEHUMIDIFIER"="Dehumidifier", "COLD"="Cold", "HEAT"="Heat", "FAN"="Fan"] visibility=[DaikinACUnit_Power_Salotto==ON]
 					Selection item=DaikinACUnit_Fan_Salotto mappings=["AUTO"="Auto", "SILENCE"="Silence", "LEVEL_1"="Level 1", "LEVEL_2"="Level 2", "LEVEL_3"="Level 3", "LEVEL_4"="Level 4", "LEVEL_5"="Level 5"] visibility=[DaikinACUnit_Power_Salotto==ON]
+					Selection item=DaikinACUnit_Fan_Movement_Salotto mappings=["STOPPED"="Ferma", "VERTICAL"="Verticale", "HORIZONTAL"="Orizzontale", "VERTICAL_AND_HORIZONTAL"="Verticale e orizzontale"] visibility=[DaikinACUnit_Power_Salotto==ON]
 					Text item=DaikinACUnit_IndoorTemperature_Salotto
 					Text item=DaikinACUnit_OutdoorTemperature_Salotto
 				}
 		}
-
-	}
 	Frame label="Riscaldamento"	{
 		Text item=gAvgTemperatura labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
 		Text item=SwitchBinary2_Caldaia_Tecnico_ZW22 valuecolor=[ON="green", OFF="red"]
 		Switch item=Riscaldamento_Auto mappings=[OFF="Manuale", ON="Automatico"]
-		Setpoint item=Riscaldamento_ManualSetPoint label="Temp. Target [%.1f °C]" minValue=15 maxValue=25 step=0.5 visibility=[Riscaldamento_Auto==OFF] //Set temperatura
+		Default item=Riscaldamento_Auto_SP visibility=[Riscaldamento_Auto==ON]
+		Setpoint item=Riscaldamento_ManualSetPoint label="SetPoint Manuale [%.1f °C]" minValue=15 maxValue=25 step=0.5 visibility=[Riscaldamento_Auto==OFF] //Set temperatura
 	}	
 	Frame label="Gestione presenza" {
 		Text item=Presence label="Non c'è nessuno!" visibility=[Presence==OFF] 
@@ -202,8 +209,8 @@ sitemap Casatenovo label="Benvenuto a Casa"
 			// Switch item=prodino0_out2
 			// Switch item=prodino0_out3
 			// Switch item=prodino0_out4
-			Text item=Prodino_temp
-			Text item=Prodino_umid
+			//Text item=Prodino_temp
+			//Text item=Prodino_umid
 		}
 	}
 	Frame label="Che tempo che fa" {

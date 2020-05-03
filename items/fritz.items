@@ -16,7 +16,7 @@ Contact repeater1160      "Presence Repeater 1160 [MAP(presence.map):%s]"    (gF
 Contact repeater310      "Presence Repeater 310 [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:E6-28-6D-34-71-49" }
 Contact prodino    "Presence Prodino [MAP(presence.map):%s]"    (gFritz, gIP)    {fritzboxtr064="maconline:5C-CF-7F-13-6E-D7"}
 
-// WAN statistics
+// WAN statistics 
 String  fboxWanAccessType "FBox WAN access type [%s]" (gFritz)  {fritzboxtr064="wanWANAccessType"}
 Number  fboxWanLayer1UpstreamMaxBitRate "FBox WAN us max bit rate [%s]" (gFritz)  {fritzboxtr064="wanLayer1UpstreamMaxBitRate"}
 Number  fboxWanLayer1DownstreamMaxBitRate "FBox WAN ds max bit rate [%s]" (gFritz)  {fritzboxtr064="wanLayer1DownstreamMaxBitRate"}

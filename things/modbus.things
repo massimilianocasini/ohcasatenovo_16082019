@@ -1,6 +1,6 @@
 Bridge modbus:tcp:localhostTCP [ host="192.168.178.6", port=502, id=1, timeBetweenReconnectMillis=250, connectMaxTries=3 ] {
     // The base Register Common Block is set to 10001 (MODBUS PLC address [base 1]), or 10000 (MODBUS Protocol Address [base 0]).
-    Bridge poller inverter [ start=40071, length=38, refresh=5000, type="holding" ] {
+    Bridge poller inverter [ start=40071, length=34, refresh=5000, type="holding" ] {
         Thing data I_AC_Current [readStart="40071", readValueType="uint16"]
         Thing data I_AC_CurrentA [readStart="40072", readValueType="uint16"]
         Thing data I_AC_CurrentB [readStart="40073", readValueType="uint16"]
@@ -31,10 +31,10 @@ Bridge modbus:tcp:localhostTCP [ host="192.168.178.6", port=502, id=1, timeBetwe
         Thing data I_DC_Voltage_SF [readStart="40099", readValueType="int16"]
         Thing data I_DC_Power [readStart="40100", readValueType="int16"]
         Thing data I_DC_Power_SF [readStart="40101", readValueType="int16"]
-        Thing data I_Temp_Sink [readStart="40103", readValueType="int16"]
-        Thing data I_Temp_SF [readStart="40106", readValueType="int16"]
-        Thing data I_Status [readStart="40107", readValueType="uint16"]
-        Thing data I_Status_Vendor [readStart="40108", readValueType="uint16"]
+      //  Thing data I_Temp_Sink [readStart="40103", readValueType="int16"]
+      //  Thing data I_Temp_SF [readStart="40106", readValueType="int16"]
+      //  Thing data I_Status [readStart="40107", readValueType="uint16"]
+      //  Thing data I_Status_Vendor [readStart="40108", readValueType="uint16"]
 
     }
 
